@@ -2,7 +2,7 @@
 
     <div class="row mb-2">
         <div class="col-lg-5">
-            <h1>Siswa-Siswa</h1>
+            <h1>Siswa-Siswa <?php echo exec('whoami'); ?></h1>
         </div>
     </div>
 
