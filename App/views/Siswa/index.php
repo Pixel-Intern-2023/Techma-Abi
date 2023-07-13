@@ -1,17 +1,5 @@
 <div class="container mt-4">
 
-    <div class="row mb-2">
-        <div class="col-lg-5">
-            <h1>Siswa-Siswa <?php echo exec('whoami'); ?></h1>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-lg-8">
-
-        </div>
-    </div>
-
     <div class="row align-items-baseline">
         <div class="col-md-1">
             <button type="button" class="btn btn-primary btn-lg tambah" data-bs-toggle="modal"
@@ -91,7 +79,7 @@
                     <input type="hidden" name="id" id="id">
                     <div class="mb-3">
                         <label for="gambar" class="form-label">Gambar :</label>
-                        <input type="file" required="true" class="form-control" id="gambar" name="gambar">
+                        <input type="file" class="form-control" id="gambar" name="gambar">
                     </div>
 
                     <div class="mb-3">
