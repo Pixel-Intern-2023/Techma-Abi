@@ -9,7 +9,7 @@ class Employe extends Controller{
         $data['employe'] = $this->model('employe_model')->getEmployeJoin();
         $this->view('templates/header' , $data);
         $this->view('templates/sidebar');
-        $this->view('home/index', $data);
+        $this->view('employe/index', $data);
         $this->view('templates/footer');
 
     }
@@ -39,7 +39,6 @@ class Employe extends Controller{
 
     function delete($id){
 
-
         if ($this->model('employe_model')->deleteEmploye($id) > 0) {
             Flasher::setFlash('Successfully','Deleted','success');
             header('location:' . BASEURL . '/employe');
@@ -52,24 +51,38 @@ class Employe extends Controller{
 
     }
 
-    function getUbah(){
-        echo json_encode($this->model('Siswa_model')->getSiswaById($_POST['id']));
+    function getUpdate(){
+        echo json_encode($this->model('employe_model')->getEmployeById($_POST['id']));
     }
 
 
-    function ubah(){
+    function update(){
 
-        if ($this->model('Siswa_model')->ubahSiswa($_POST,$_FILES) > 0) {
-            Flasher::setFlash('Berhasil','Diubah','success');
-            header('location:' . BASEURL . '/siswa');
+        if ($this->model('employe_model')->updateEmploye($_POST,$_FILES) > 0) {
+            Flasher::setFlash('Successfully','Changed','success');
+            header('location:' . BASEURL . '/employe');
             exit;
         }else {
-            Flasher::setFlash('Gagal','Diubah','error');
-            header('location:' . BASEURL . '/siswa');
+            Flasher::setFlash('Failed','To Change','error');
+            header('location:' . BASEURL . '/employe');
             exit;
         }
 
     }
+
+    function fire($id)
+    {
+        if ($this->model('employe_model')->fireEmploye($id) > 0) {
+            Flasher::setFlash('Successfully','Fired','success');
+            header('location:' . BASEURL . '/employe');
+            exit;
+        }else {
+            Flasher::setFlash('Failed','To Fire','error');
+            header('location:' . BASEURL . '/employe');
+            exit;
+        }
+    }
+
 
     function cari(){
 

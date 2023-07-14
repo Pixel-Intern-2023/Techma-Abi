@@ -22,10 +22,10 @@ class Employe_model
         return $this->db->resultSet();
     }
 
-    function getSiswaById($id)
+    function getEmployeById($id)
     {
-        $this->db->query('SELECT * FROM ' . $this->table . ' WHERE id=:id');
-        $this->db->bind('id', $id);
+        $this->db->query('SELECT * FROM ' . $this->table . ' WHERE id_employe=:id_employe');
+        $this->db->bind('id_employe', $id);
         return $this->db->single();
     }
 
@@ -54,7 +54,6 @@ class Employe_model
     }
 
 
-
     function deleteEmploye($id_employe)
     {
         $query = "DELETE FROM " . $this->table . " WHERE id_employe= :id_employe";
@@ -67,44 +66,62 @@ class Employe_model
     }
 
 
-
-
-
-    function ubahSiswa($data, $dataGambar)
+    function updateEmploye($data, $dataImg)
     {
 
-        $old_gambar = $this->getSiswaById($data['id']);
-        $filename = $dataGambar['gambar']['name'];
-        $tempPath = $dataGambar['gambar']['tmp_name'];
+        // var_dump($dataImg);
+        // die;
+        
+        $old_gambar = $this->getEmployeById($data['id_employe']);
+        $filename = $dataImg['employe_image']['name'];
+        $tempPath = $dataImg['employe_image']['tmp_name'];
 
-        if ($dataGambar['gambar']['name'] == "") {
-            $dataGambar =  $old_gambar['gambar'];
+        if ($dataImg['employe_image']['name'] == "") {
+            $dataImg =  $old_gambar['employe_image'];
         }else {
-            $dataGambar = $filename;
-            unlink( __DIR__ . './../../Public/img/'.$old_gambar);
+            $dataImg = $filename;
+            unlink( __DIR__ .'/../../Public/img/'.$old_gambar['employe_image']);
             move_uploaded_file($tempPath, __DIR__ . './../../Public/img/'.$filename);
         }
 
-        $query = "UPDATE siswa SET 
-        nama = :nama,
-        gambar = :gambar,
-        hobi = :hobi,
-        umur = :umur
-        WHERE id = :id";
+        $query = "UPDATE " . $this->table ." SET 
+        employe_image = :employe_image,
+        name = :name,
+        id_occupation = :id_occupation,
+        description = :description,
+        salary = :salary,
+        employe_status = :employe_status,
+        updated_at = :updated_at
+        WHERE id_employe=:id_employe";
 
+        date_default_timezone_set("asia/Jakarta");
+        $update_time = date('y-m-d h:i:s');
+    
         $this->db->query($query);
-        $this->db->bind('id', $data['id']);
-        $this->db->bind('gambar', $dataGambar);
-        $this->db->bind('nama', $data['nama']);
-        $this->db->bind('hobi', $data['hobi']);
-        $this->db->bind('umur', $data['umur']);
+        $this->db->bind('id_employe', $data['id_employe']);
+        $this->db->bind('employe_image', $dataImg);
+        $this->db->bind('name', $data['name']);
+        $this->db->bind('id_occupation', $data['id_occupation']);
+        $this->db->bind('description', $data['description']);
+        $this->db->bind('salary', $data['salary']);
+        $this->db->bind('employe_status', $data['employe_status']);
+        $this->db->bind('updated_at', $update_time);
         $this->db->execute();
 
         return $this->db->rowCount();
     }
 
 
+    function fireEmploye($id){
+        $query = "UPDATE " . $this->table ." SET 
+        employe_status = :employe_status WHERE id_employe=:id_employe";
 
+        $this->db->query($query);
+        $this->db->bind('employe_status', 'Fired');
+        $this->db->bind('id_employe', $id);
+        $this->db->execute();
+        return $this->db->rowCount();   
+    }
 
 
     function cariSiswa()
