@@ -1,0 +1,99 @@
+<?php
+
+ini_set("display_errors", "1") ;
+
+class Employe extends Controller{
+
+    function index(){
+        $data['title'] = "Home";
+        $data['employe'] = $this->model('employe_model')->getEmployeJoin();
+        $this->view('templates/header' , $data);
+        $this->view('templates/sidebar');
+        $this->view('employe/index', $data);
+        $this->view('templates/footer');
+
+    }
+
+    function detail($id){
+
+        $data['judul'] = "Halaman Detail Siswa";
+        $data['siswa'] = $this->model('Siswa_model')->getSiswaById($id);
+        $this->view('templates/header' , $data);
+        $this->view('siswa/detail', $data);
+        $this->view('templates/footer');
+
+    }
+
+    function add(){
+
+        if ($this->model('Employe_model')->addEmploye($_POST,$_FILES) > 0) {
+            Flasher::setFlash('Successfully','Added','success');
+            header('location:' . BASEURL . '/employe');
+            exit;
+        }else {
+            Flasher::setFlash('Failed','To Add','error');
+            header('location:' . BASEURL . '/error');
+            exit;
+        }
+    }
+
+    function delete($id){
+
+        if ($this->model('employe_model')->deleteEmploye($id) > 0) {
+            Flasher::setFlash('Successfully','Deleted','success');
+            header('location:' . BASEURL . '/employe');
+            exit;
+        }else {
+            Flasher::setFlash('Failed','To Delete','dark');
+            header('location:' . BASEURL . '/siswa');
+            exit;
+        }
+
+    }
+
+    function getUpdate(){
+        echo json_encode($this->model('employe_model')->getEmployeById($_POST['id']));
+    }
+
+
+    function update(){
+
+        if ($this->model('employe_model')->updateEmploye($_POST,$_FILES) > 0) {
+            Flasher::setFlash('Successfully','Changed','success');
+            header('location:' . BASEURL . '/employe');
+            exit;
+        }else {
+            Flasher::setFlash('Failed','To Change','error');
+            header('location:' . BASEURL . '/employe');
+            exit;
+        }
+
+    }
+
+    function fire($id)
+    {
+        if ($this->model('employe_model')->fireEmploye($id) > 0) {
+            Flasher::setFlash('Successfully','Fired','success');
+            header('location:' . BASEURL . '/employe');
+            exit;
+        }else {
+            Flasher::setFlash('Failed','To Fire','error');
+            header('location:' . BASEURL . '/employe');
+            exit;
+        }
+    }
+
+
+    function cari(){
+
+        $data['judul'] = "Halaman Siswa";
+        $data['siswa'] = $this->model('Siswa_model')->cariSiswa();
+        $this->view('templates/header' , $data);
+        $this->view('siswa/index', $data);
+        $this->view('templates/footer');
+
+    }
+
+}
+
+?>

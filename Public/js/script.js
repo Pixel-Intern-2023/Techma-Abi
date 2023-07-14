@@ -1,43 +1,53 @@
 $(function () {
 
-    $('.ubah').on('click', function () {
+    $('.update').on('click', function () {
 
-        $('#judulmodal').html('Ubah Data Siswa');
-        $('.modal-footer button[type=submit]').html('Ubah Data');
-        $('.modal-body form').attr('action', 'http://localhost/PhpMVC/public/siswa/ubah');
+        $('#modal-title').html('Update Employe');
+        $('.modal-footer button[type=submit]').html('Update Data');
+        $('.modal-body form').attr('action', 'http://localhost/Techma/public/employe/update');
 
         const id = $(this).data('id');
 
         $.ajax({
-            url: 'http://localhost/PhpMVC/public/siswa/getUbah',
+            url: 'http://localhost/Techma/public/employe/getUpdate',
             data: { id: id },
             method: 'post',
             dataType: 'json',
             success: function (data) {
-                $('#id').val(data.id)
-                $('#nama').val(data.nama)
-                $('#hobi').val(data.hobi)
-                $('#umur').val(data.umur)
+
+                $('#id_employe').val(data.id_employe)
+                $('#profile').attr(data.employe_image)
+                $('#name').val(data.name)
+                $('#id_occupation').val(data.id_occupation)
+                $('#description').val(data.description)
+                $('#salary').val(data.salary)
+                $('#created_at').val(data.created_at)
+                $('#update_at').val(data.update_at)
             }
         });
     });
 
 
-    $('.tambah').on('click', function () {
+    $('.add').on('click', function () {
 
-        $('#judulmodal').html('Tambah Data Siswa');
-        $('.modal-footer button[type=submit]').html('Tambah Data');
-        $('#nama').val('');
-        $('#hobi').val('');
-        $('#umur').val('');
+        $('#modal-title').html('Add Employee');
+        $('.modal-footer button[type=submit]').html('Add Employe');
+
+        $('#id_employe').val('')
+        $('#profile').attr('')
+        $('#name').val('')
+        $('#id_occupation').val('')
+        $('#description').val('')
+        $('#salary').val('')
+        $('#created_at').val('')
+        $('#update_at').val('')
 
     });
-    
+
 });
 
 
-
-$(document).on('click', '#btn-hapus', function (e) {
+$(document).on('click', '#btn-delete', function (e) {
 
     e.preventDefault();
     let link = $(this).attr('href');
@@ -57,4 +67,3 @@ $(document).on('click', '#btn-hapus', function (e) {
     });
 
 });
-
