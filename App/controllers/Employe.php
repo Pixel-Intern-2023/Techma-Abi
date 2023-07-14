@@ -6,7 +6,7 @@ class Employe extends Controller{
 
     function index(){
         $data['title'] = "Home";
-        $data['employe'] = $this->model('employe_model')->getAllemploye();
+        $data['employe'] = $this->model('employe_model')->getEmployeJoin();
         $this->view('templates/header' , $data);
         $this->view('templates/sidebar');
         $this->view('home/index', $data);

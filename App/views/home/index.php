@@ -33,13 +33,13 @@
   </header>
 
 
-
   <div class="container-fluid">
     <div class="row">
       <div class="col-lg-12">
         <?= Flasher::flash(); ?>
       </div>
     </div>
+    
     <div class="row">
       <div class="col-lg-3">
         <button type="button" class="btn btn-info btn-lg add" data-bs-toggle="modal" data-bs-target="#form-modal">
@@ -87,12 +87,13 @@
                 <tbody>
 
                   <?php
+                  $no = 1;
                   foreach ($data['employe'] as $employe):
                     ?>
                     <tr>
                       <td class="border-bottom-0">
                         <h6 class="fw-semibold mb-0">
-                          <?= $employe['id_employe']; ?>
+                          <?= $no++; ?>
                         </h6>
                       </td>
                       <td class="border-bottom-0">
@@ -106,7 +107,7 @@
                       </td>
                       <td class="border-bottom-0">
                         <h6 class="fw-semibold mb-0">
-                          <?= $employe['id_occupation']; ?>
+                          <?= $employe['occupation_name']; ?>
                         </h6>
                       </td>
                       <td class="border-bottom-0">

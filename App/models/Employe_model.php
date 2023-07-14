@@ -16,6 +16,11 @@ class Employe_model
         $this->db->query('SELECT * FROM ' . $this->table);
         return $this->db->resultSet();
     }
+    
+    function getEmployeJoin(){
+        $this->db->query('SELECT employe.id_employe, employe.employe_image, employe.name, occupation.occupation_name, employe.description, employe.salary, employe.employe_status FROM ' . $this->table . ' JOIN occupation ON employe.id_occupation = occupation.id_occupation');
+        return $this->db->resultSet();
+    }
 
     function getSiswaById($id)
     {
