@@ -5,24 +5,29 @@ ini_set("display_errors", "1") ;
 class Employe extends Controller{
 
     function index(){
-        $data['title'] = "Home";
-        $data['employe'] = $this->model('employe_model')->getEmployeJoin();
+        $data = [
+            'title' => 'Home',
+            'employe' => $this->model('employe_model')->getEmployeJoin()
+            
+        ];
         $this->view('templates/header' , $data);
-        $this->view('templates/sidebar');
         $this->view('employe/index', $data);
+        $this->view('templates/modal_employe');
         $this->view('templates/footer');
 
     }
 
     function detail($id){
 
-        $data['judul'] = "Halaman Detail Siswa";
-        $data['siswa'] = $this->model('Siswa_model')->getSiswaById($id);
+        $data['judul'] = "Halaman Detail Employe";
+        $data['employe'] = $this->model('Employe_model')->getEmployeJoinId($id);
         $this->view('templates/header' , $data);
-        $this->view('siswa/detail', $data);
+        $this->view('employe/detail', $data);
+        $this->view('templates/modal_employe');
         $this->view('templates/footer');
 
     }
+
 
     function add(){
 
@@ -32,7 +37,7 @@ class Employe extends Controller{
             exit;
         }else {
             Flasher::setFlash('Failed','To Add','error');
-            header('location:' . BASEURL . '/error');
+            header('location:' . BASEURL . '/employe');
             exit;
         }
     }
@@ -44,8 +49,8 @@ class Employe extends Controller{
             header('location:' . BASEURL . '/employe');
             exit;
         }else {
-            Flasher::setFlash('Failed','To Delete','dark');
-            header('location:' . BASEURL . '/siswa');
+            Flasher::setFlash('Failed','To Delete','error');
+            header('location:' . BASEURL . '/employe');
             exit;
         }
 
@@ -54,7 +59,7 @@ class Employe extends Controller{
     function getUpdate(){
         echo json_encode($this->model('employe_model')->getEmployeById($_POST['id']));
     }
-
+    
 
     function update(){
 
@@ -83,13 +88,12 @@ class Employe extends Controller{
         }
     }
 
+    function find(){
 
-    function cari(){
-
-        $data['judul'] = "Halaman Siswa";
-        $data['siswa'] = $this->model('Siswa_model')->cariSiswa();
+        $data['judul'] = "Halaman Employe";
+        $data['employe'] = $this->model('employe_model')->findEmploye();
         $this->view('templates/header' , $data);
-        $this->view('siswa/index', $data);
+        $this->view('employe/index', $data);
         $this->view('templates/footer');
 
     }

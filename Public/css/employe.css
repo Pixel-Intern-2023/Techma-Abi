@@ -1,0 +1,6 @@
+.delete , .update{
+    /* display: none; */
+}
+.filter{
+    filter: grayscale(100%);
+}
