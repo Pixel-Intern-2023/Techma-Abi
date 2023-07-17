@@ -12,7 +12,9 @@
   <link rel="stylesheet" href="<?= BASEURL; ?>/css/employe.css" />
   <link rel="shortcut icon" type="image/png" href="<?= BASEURL; ?>/images/logos/favicon.png" />
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </head>
+
 
 <body>
   <!--  Body Wrapper -->
