@@ -1,7 +1,6 @@
 <?php
 
-class Employe_model
-{
+class Employe_model {
 
     private $table = 'employe';
     private $db;
@@ -11,16 +10,29 @@ class Employe_model
         $this->db = new Database;
     }
 
-    function getAllemploye()
+
+    function getAll($tb)
     {
-        $this->db->query('SELECT * FROM ' . $this->table);
+        $this->db->query('SELECT * FROM ' . $tb);
         return $this->db->resultSet();
     }
+
     
-    function getEmployeJoin(){
+    function getEmployeJoin()
+    {
         $this->db->query('SELECT employe.id_employe, employe.employe_image, employe.name, occupation.occupation_name, employe.description, employe.salary, employe.employe_status FROM ' . $this->table . ' JOIN occupation ON employe.id_occupation = occupation.id_occupation');
         return $this->db->resultSet();
     }
+
+
+    function getEmployeJoinId($id)
+    {
+        $this->db->query('SELECT employe.id_employe, employe.employe_image, employe.name, occupation.occupation_name, employe.description, employe.salary, employe.employe_status FROM ' . $this->table . ' JOIN occupation ON employe.id_occupation = occupation.id_occupation WHERE id_employe=:id_employe');
+
+        $this->db->bind('id_employe', $id);
+        return $this->db->single();
+    }
+
 
     function getEmployeById($id)
     {
@@ -29,16 +41,40 @@ class Employe_model
         return $this->db->single();
     }
 
+
+    function getEmployeCount()
+    {
+        $this->db->query('SELECT COUNT(*) as employe FROM ' . $this->table);
+        
+        return $this->db->single();
+    }
+
+
+    function getWorkingCount()
+    {
+        $this->db->query('SELECT COUNT(*) as working FROM ' . $this->table . " WHERE employe_status = 'Working'");
+
+        return $this->db->single();
+    }
+
+
+    function getFiredCount()
+    {
+        $this->db->query('SELECT COUNT(*) as fired FROM ' . $this->table . " WHERE employe_status = 'Fired'");
+
+        return $this->db->single();
+    }
+
+    
     function addEmploye($data, $dataImg)
     {
         $filename = $dataImg['employe_image']['name'];
         $tempPath = $dataImg['employe_image']['tmp_name'];
         
-
         if (move_uploaded_file($tempPath, __DIR__ . './../../Public/img/'.$filename)){
-            echo($data['name']);
 
             $query = "INSERT INTO " . $this->table . " VALUES (null, :employe_image, :name, :id_occupation, :description, :salary, :employe_status, null, null)";
+
             $this->db->query($query);
             $this->db->bind('employe_image', $dataImg['employe_image']['name']);
             $this->db->bind('name', $data['name']);
@@ -69,9 +105,6 @@ class Employe_model
     function updateEmploye($data, $dataImg)
     {
 
-        // var_dump($dataImg);
-        // die;
-        
         $old_gambar = $this->getEmployeById($data['id_employe']);
         $filename = $dataImg['employe_image']['name'];
         $tempPath = $dataImg['employe_image']['tmp_name'];
@@ -90,7 +123,6 @@ class Employe_model
         id_occupation = :id_occupation,
         description = :description,
         salary = :salary,
-        employe_status = :employe_status,
         updated_at = :updated_at
         WHERE id_employe=:id_employe";
 
@@ -104,7 +136,6 @@ class Employe_model
         $this->db->bind('id_occupation', $data['id_occupation']);
         $this->db->bind('description', $data['description']);
         $this->db->bind('salary', $data['salary']);
-        $this->db->bind('employe_status', $data['employe_status']);
         $this->db->bind('updated_at', $update_time);
         $this->db->execute();
 
@@ -124,10 +155,10 @@ class Employe_model
     }
 
 
-    function cariSiswa()
+    function findEmploye()
     {
         $keyword = $_POST['keyword'];
-        $query = 'SELECT * FROM ' . $this->table . ' WHERE nama LIKE :keyword ';
+        $query = 'SELECT employe.id_employe, employe.employe_image, employe.name, occupation.occupation_name, employe.description, employe.salary, employe.employe_status FROM ' . $this->table . ' JOIN occupation ON employe.id_occupation = occupation.id_occupation WHERE name LIKE :keyword';
 
         $this->db->query($query);
         $this->db->bind('keyword', "%$keyword%");
