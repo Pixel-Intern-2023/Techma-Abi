@@ -1,4 +1,11 @@
 <div class="container-fluid">
+    
+    <div class="row">
+        <div class="col-lg-12">
+            <?= Flasher::flash(); ?>
+        </div>
+    </div>
+
     <div class="row mt-3">
         <div class="col-lg-12 mt-5">
             <div class="card w-100 position-relative">
@@ -10,27 +17,27 @@
 
                         <div class="mb-3">
                             <label class="form-label">Name :</label>
-                            <input type="text" autocomplete="true" readonly required="true" value="<?= $data['employe']['name'] ?>" class="form-control" >
+                            <input type="text" autocomplete="true" readonly required="true" value="<?= $data['employe']['name'] ?>" class="form-control">
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label">Occupation :</label>
-                            <input type="text" autocomplete="true" readonly required="true" class="form-control" value="<?= $data['employe']['occupation_name'] ?>" >
+                            <input type="text" autocomplete="true" readonly required="true" class="form-control" value="<?= $data['employe']['occupation_name'] ?>">
                         </div>
 
                         <div class="mb-3">
-                            <label  class="form-label">Description :</label>
-                            <textarea class="form-control" readonly required  rows="2" ><?= $data['employe']['description'] ?></textarea>
+                            <label class="form-label">Description :</label>
+                            <textarea class="form-control" readonly required rows="2"><?= $data['employe']['description'] ?></textarea>
                         </div>
 
                         <div class="mb-3">
-                            <label  class="form-label">Salary :</label>
-                            <input type="number" readonly required class="form-control"  value="<?= $data['employe']['salary'] ?>" >
+                            <label class="form-label">Salary :</label>
+                            <input type="number" readonly required class="form-control" value="<?= $data['employe']['salary'] ?>">
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label">Status :</label>
-                            <input type="text" readonly required class="form-control"  value="<?= $data['employe']['employe_status'] ?>" >
+                            <input type="text" readonly required class="form-control" value="<?= $data['employe']['employe_status'] ?>">
                         </div>
 
                     </form>

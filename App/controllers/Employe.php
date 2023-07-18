@@ -6,12 +6,11 @@ class Employe extends Controller{
 
     function index(){
         $data = [
-            'title' => 'Home Page',
             'employe' => $this->model('employe_model')->getEmployeJoin()
         ];
         $this->checkLogin();
-        $this->view('templates/header' , $data);
-        $this->view('templates/sidebar' , $data);
+        $this->view('templates/header');
+        $this->view('templates/sidebar');
         $this->view('employe/index', $data);
         $this->view('templates/modal_employe');
         $this->view('templates/footer');
@@ -20,14 +19,13 @@ class Employe extends Controller{
     function detail($id){
 
         $data = [
-            'judul' => "Detail Page",
             'employe' => $this->model('Employe_model')->getEmployeJoinId($id)
         ];
         $this->checkLogin();
-        $this->view('templates/header' , $data);
-        $this->view('templates/sidebar' , $data);
+        $this->view('templates/header');
+        $this->view('templates/sidebar');
         $this->view('employe/detail', $data);
-        $this->view('templates/modal_employe', $data);
+        $this->view('templates/modal_employe');
         $this->view('templates/footer');
 
     }
@@ -68,7 +66,7 @@ class Employe extends Controller{
 
         if ($this->model('employe_model')->updateEmploye($_POST,$_FILES) > 0) {
             Flasher::setFlash('Successfully','Changed','success');
-            header('location:' . BASEURL . '/employe');
+            header('location:' . $_SERVER['HTTP_REFERER']);
             exit;
         }else {
             Flasher::setFlash('Failed','To Change','error');
@@ -82,11 +80,11 @@ class Employe extends Controller{
     {
         if ($this->model('employe_model')->fireEmploye($id) > 0) {
             Flasher::setFlash('Successfully','Fired','success');
-            header('location:' . BASEURL . '/employe/detail/' . $id);
+            header('location:' . BASEURL . '/employe');
             exit;
         }else {
             Flasher::setFlash('Failed','To Fire','error');
-            header('location:' . BASEURL . '/employe/detail' . $id);
+            header('location:' . BASEURL . '/employe');
             exit;
         }
     }
@@ -94,11 +92,10 @@ class Employe extends Controller{
     function find(){
 
         $data=[
-            'judul' => "Search",
             'employe' => $this->model('employe_model')->findEmploye()
         ];
-        $this->view('templates/header' , $data);
-        $this->view('templates/sidebar' , $data);
+        $this->view('templates/header');
+        $this->view('templates/sidebar');
         $this->view('employe/index', $data);
         $this->view('templates/footer');
 

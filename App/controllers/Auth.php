@@ -5,7 +5,7 @@ class Auth extends Controller{
 
     function index(){
         $data = [
-
+            'title' => 'Login',
         ];
         $this->view('templates/header' , $data);
         $this->view('auth/login', $data);
@@ -15,7 +15,7 @@ class Auth extends Controller{
 
     function RegisterPage(){
         $data = [
-
+            'title' => 'Register',
         ];
         $this->view('templates/header' , $data);
         $this->view('auth/register', $data);
@@ -46,8 +46,9 @@ class Auth extends Controller{
     }
 
     function LogOut(){
-        session_destroy();
-        header('location:' . BASEURL . '/Auth/Register');
+        unset($_SESSION['user']);
+        Flasher::setFlash('Login','To Enter','error');
+        header('location:' . BASEURL . '/Auth');
     }
 
 
