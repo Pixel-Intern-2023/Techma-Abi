@@ -7,51 +7,51 @@ class Admin extends Controller{
 
         $data = [
             'title' => 'Home',
-            'admin' => $this->model('employe_model')->getAll('admin')
+            'admin' => $this->model('admin_model')->getAllAdmin('')
         ];
         $this->view('templates/header' , $data);
+        $this->view('templates/sidebar' , $data);
         $this->view('admin/index', $data);
-        $this->view('templates/modal_admin');
         $this->view('templates/footer');
     }
 
 
-    function add(){
+    // function add(){
 
-        if ($this->model('Admin_model')->addAdmin($_POST) > 0) {
-            Flasher::setFlash('Successfully','Added','success');
-            header('location:' . BASEURL . '/admin');
-            exit;
-        }else {
-            Flasher::setFlash('Failed','To Add','error');
-            header('location:' . BASEURL . '/admin');
-            exit;
-        }
-    }
+    //     if ($this->model('Admin_model')->addAdmin($_POST) > 0) {
+    //         Flasher::setFlash('Successfully','Added','success');
+    //         header('location:' . BASEURL . '/admin');
+    //         exit;
+    //     }else {
+    //         Flasher::setFlash('Failed','To Add','error');
+    //         header('location:' . BASEURL . '/admin');
+    //         exit;
+    //     }
+    // }
 
 
-    function delete($id){
-        if ($this->model('admin_model')->deleteAdmin($id) > 0) {
-            Flasher::setFlash('Successfully','Deleted','success');
-            header('location:' . BASEURL . '/admin');
-            exit;
-        }else {
-            Flasher::setFlash('Failed','To Delete','error');
-            header('location:' . BASEURL . '/admin');
-            exit;
-        }
+    // function delete($id){
+    //     if ($this->model('admin_model')->deleteAdmin($id) > 0) {
+    //         Flasher::setFlash('Successfully','Deleted','success');
+    //         header('location:' . BASEURL . '/admin');
+    //         exit;
+    //     }else {
+    //         Flasher::setFlash('Failed','To Delete','error');
+    //         header('location:' . BASEURL . '/admin');
+    //         exit;
+    //     }
 
-    }
+    // }
 
-    function find(){
+    // function find(){
 
-        $data['judul'] = "Halaman Admin";
-        $data['admin'] = $this->model('admin_model')->findAdmin();
-        $this->view('templates/header' , $data);
-        $this->view('employe/index', $data);
-        $this->view('templates/footer');
+    //     $data['judul'] = "Halaman Admin";
+    //     $data['admin'] = $this->model('admin_model')->findAdmin();
+    //     $this->view('templates/header' , $data);
+    //     $this->view('employe/index', $data);
+    //     $this->view('templates/footer');
 
-    }
+    // }
 
     // function getUpdate(){
     //     echo json_encode($this->model('admin_model')->getAdminById($_POST['id']));

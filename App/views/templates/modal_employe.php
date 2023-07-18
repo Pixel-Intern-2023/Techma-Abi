@@ -26,7 +26,6 @@
                     <div class="mb-3">
                         <label for="id_occupation" class="form-label">Occupation :</label>
                         <select class="form-select" aria-label="Default select example" required id="id_occupation" name="id_occupation">
-                            <option selected>Select Occupation</option>
                             <option value="1">IT</option>
                             <option value="2">Accountant</option>
                         </select>

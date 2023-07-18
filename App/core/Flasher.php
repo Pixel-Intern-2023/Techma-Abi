@@ -32,6 +32,7 @@ class Flasher
             echo '</script>';
         
             unset($_SESSION['flash']);
+            
         }
     }
 }

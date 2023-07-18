@@ -16,11 +16,17 @@ class Employe_model {
         $this->db->query('SELECT * FROM ' . $tb);
         return $this->db->resultSet();
     }
-
     
     function getEmployeJoin()
     {
-        $this->db->query('SELECT employe.id_employe, employe.employe_image, employe.name, occupation.occupation_name, employe.description, employe.salary, employe.employe_status FROM ' . $this->table . ' JOIN occupation ON employe.id_occupation = occupation.id_occupation');
+        $this->db->query('SELECT 
+        employe.id_employe, 
+        employe.employe_image, 
+        employe.name, 
+        occupation.occupation_name, 
+        employe.description, employe.salary, 
+        employe.employe_status 
+        FROM ' . $this->table . ' JOIN occupation ON employe.id_occupation = occupation.id_occupation');
         return $this->db->resultSet();
     }
 
@@ -42,6 +48,7 @@ class Employe_model {
     }
 
 
+    // Count
     function getEmployeCount()
     {
         $this->db->query('SELECT COUNT(*) as employe FROM ' . $this->table);
@@ -64,6 +71,7 @@ class Employe_model {
 
         return $this->db->single();
     }
+    // Count End
 
     
     function addEmploye($data, $dataImg)
@@ -168,5 +176,3 @@ class Employe_model {
 
 
 }
-
-?>

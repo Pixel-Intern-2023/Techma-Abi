@@ -1,11 +1,11 @@
 <!--  Main wrapper -->
 <div class="container-fluid">
+    
     <div class="row">
         <div class="col-lg-12">
             <?= Flasher::flash(); ?>
         </div>
     </div>
-
 
     <div class="row mt-2">
         <div class="col-md-5">
@@ -22,8 +22,8 @@
 
     <div class="row">
         <div class="col-lg-3">
-            <button type="button" class="btn btn-primary btn-lg add-employe" data-bs-toggle="modal" data-bs-target="#form-modal">
-                <i class="ti ti-user-plus me-2"></i>Add Employe
+            <button type="button" class="btn btn-primary add-employe" data-bs-toggle="modal" data-bs-target="#form-modal">
+                <i class="ti ti-user-plus fs-5 me-2"></i>Add Employe
             </button>
         </div>
     </div>
@@ -58,7 +58,7 @@
                             <tbody>
                                 <?php
                                 $no = 1;
-                                foreach ($data['employe'] as $data):
+                                foreach ($data['employe'] as $data) :
                                 ?>
                                     <tr>
                                         <td class="border-bottom-0">
@@ -76,17 +76,13 @@
                                             </p>
                                         </td>
                                         <td class="border-bottom-0">
-                                            <div class="d-flex align-items-center gap-2">
-                                                <span class="badge bg-primary <?= $data['employe_status'] == 'Fired' ? 'bg-dark' : '' ?> rounded-3 fw-semibold">
-                                                    <?= $data['employe_status']; ?>
-                                                </span>
-                                            </div>
+                                            <span class="badge bg-primary <?= $data['employe_status'] == 'Fired' ? 'bg-dark' : '' ?> rounded-3 fw-semibold">
+                                                <?= $data['employe_status']; ?>
+                                            </span>
                                         </td>
-                                        <td>
-                                            <a href="<?= BASEURL; ?>/employe/delete/<?= $data['id_employe']; ?>" class="btn btn-sm btn-danger delete">Delete</a>
-                                            <a href="<?= BASEURL; ?>/employe/fire/<?= $data['id_employe']; ?>" class="btn btn-sm btn-dark">Fire</a>
-                                            <a href="<?= BASEURL; ?>/employe/update/<?= $data['id_employe']; ?>" class="btn btn-sm btn-success update-employe" data-bs-toggle="modal" data-bs-target="#form-modal" data-id="<?= $data['id_employe'] ?>">Update</a>
-                                            <a href="<?= BASEURL; ?>/employe/detail/<?= $data['id_employe']; ?>" class="btn btn-sm btn-success detail">Detail</a>
+                                        <td class="border-bottom-0">
+                                            <a href="<?= BASEURL; ?>/employe/fire/<?= $data['id_employe']; ?>" class="btn btn-dark me-1 fire">Fire</a>
+                                            <a href="<?= BASEURL; ?>/employe/detail/<?= $data['id_employe']; ?>" class="btn btn-warning detail">Detail</a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
@@ -99,4 +95,5 @@
             </div>
         </div>
     </div>
+
 </div>

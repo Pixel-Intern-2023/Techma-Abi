@@ -11,6 +11,14 @@ class Controller{
         return new $model ;
     }
 
+    function checkLogin() {
+        if (!isset($_SESSION['user'])) {
+            header('location: ' . BASEURL . '/Auth/Login');
+            exit();
+        }
+    }
+
+
 }
 
 ?>
