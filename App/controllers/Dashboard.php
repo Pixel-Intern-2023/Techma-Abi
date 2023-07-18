@@ -12,7 +12,9 @@ class Dashboard extends Controller{
             'fired' => $this->model('employe_model')->getFiredCount(),
             'admin' => $this->model('admin_model')->getAdminCount()
         ];
+        $this->checkLogin();
         $this->view('templates/header' , $data);
+        $this->view('templates/sidebar' , $data);
         $this->view('dashboard/index', $data);
         $this->view('templates/footer');
     }
