@@ -18,21 +18,18 @@ class Flasher
     public static function flash()
     {
         if (isset($_SESSION['flash'])) {
-
-            $message = $_SESSION['flash']['message'];
-            $action = $_SESSION['flash']['action'];
-            $type = $_SESSION['flash']['type'];
+         
+            
     
             echo '<script>';
             echo 'Swal.fire({';
-            echo '    text: "'. $action . '",';
-            echo '    icon: "' . $type . '",';
-            echo '    title: "' . $message . '",';
+            echo '    text: "'. $_SESSION['flash']['message'] .'",';
+            echo '    icon: "' . $_SESSION['flash']['type'] .'",';
+            echo '    title: "' . $_SESSION['flash']['action']  . '",';
             echo '});';
             echo '</script>';
         
             unset($_SESSION['flash']);
-            
         }
     }
 }

@@ -13,7 +13,8 @@ class Controller{
 
     function checkLogin() {
         if (!isset($_SESSION['user'])) {
-            header('location: ' . BASEURL . '/Auth/Login');
+            Flasher::setFlash('Failed','To Enter','error');
+            header('location: ' . BASEURL . '/Auth');
             exit();
         }
     }

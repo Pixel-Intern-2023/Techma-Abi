@@ -4,9 +4,7 @@
 <head>
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">
-   <title> Halaman
-      <?= $data['title'] ?>
-   </title>
+   <title> Halaman </title>
    <link rel="stylesheet" href="<?= BASEURL; ?>/css/bootstrap_css/bootstrap.css">
    <link rel="stylesheet" href="<?= BASEURL; ?>/css/styles.min.css" />
    <link rel="stylesheet" href="<?= BASEURL; ?>/css/employe.css" />

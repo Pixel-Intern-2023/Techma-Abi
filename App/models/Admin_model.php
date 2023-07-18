@@ -102,7 +102,7 @@ class Admin_model
 
             if (password_verify( $password , $oldPassword )) {
                 $_SESSION['user'] = 'User';
-                header('location:' . BASEURL . '/Index');
+                header('location:' . BASEURL);
             } else {
                 // Password is incorrect
                 Flasher::setFlash('Failed', 'Invalid Password', 'error');
