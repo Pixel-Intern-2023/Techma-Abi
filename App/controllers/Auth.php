@@ -8,7 +8,7 @@ class Auth extends Controller{
             'title' => 'Login',
         ];
         $this->view('templates/header' , $data);
-        $this->view('auth/login', $data);
+        $this->view('auth/login');
         $this->view('templates/footer');
 
     }
@@ -18,7 +18,7 @@ class Auth extends Controller{
             'title' => 'Register',
         ];
         $this->view('templates/header' , $data);
-        $this->view('auth/register', $data);
+        $this->view('auth/register');
         $this->view('templates/footer');
     }
 
@@ -40,14 +40,12 @@ class Auth extends Controller{
         if ($this->model('admin_model')->LoginAdmin($_POST) > 0) {
             header('location:' . BASEURL . '/Index');
             exit;
-        }else {
-            exit;
         }
     }
 
     function LogOut(){
         unset($_SESSION['user']);
-        Flasher::setFlash('Login','To Enter','error');
+        Flasher::setFlash('Successfully','Log Out','success');
         header('location:' . BASEURL . '/Auth');
     }
 

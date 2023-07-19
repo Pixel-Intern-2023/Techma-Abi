@@ -1,4 +1,3 @@
-<!--  Main wrapper -->
 <div class="container-fluid">
     
     <div class="row">
@@ -11,7 +10,7 @@
         <div class="col-md-5">
             <form action="<?= BASEURL; ?>/employe/find" method="post">
                 <div class="input-group mb-3">
-                    <button class="btn btn-primary " type="submit" id="tombolCari"><i class="ti ti-search fs-5"></i>
+                    <button class="btn btn-dark " type="submit" id="tombolCari"><i class="ti ti-search fs-5"></i>
                     </button>
                     <input type="text" class="form-control" placeholder="Find Employe" name="keyword">
                 </div>
@@ -22,7 +21,7 @@
 
     <div class="row">
         <div class="col-lg-3">
-            <button type="button" class="btn btn-primary add-employe" data-bs-toggle="modal" data-bs-target="#form-modal">
+            <button type="button" class="btn btn-dark add-employe" data-bs-toggle="modal" data-bs-target="#form-modal">
                 <i class="ti ti-user-plus fs-5 me-2"></i>Add Employe
             </button>
         </div>
@@ -76,13 +75,13 @@
                                             </p>
                                         </td>
                                         <td class="border-bottom-0">
-                                            <span class="badge bg-primary <?= $data['employe_status'] == 'Fired' ? 'bg-dark' : '' ?> rounded-3 fw-semibold">
+                                            <span class="badge bg-success <?= $data['employe_status'] == 'Fired' ? 'bg-dark' : '' ?> rounded-3 fw-semibold">
                                                 <?= $data['employe_status']; ?>
                                             </span>
                                         </td>
                                         <td class="border-bottom-0">
-                                            <a href="<?= BASEURL; ?>/employe/fire/<?= $data['id_employe']; ?>" class="btn btn-dark me-1 fire">Fire</a>
-                                            <a href="<?= BASEURL; ?>/employe/detail/<?= $data['id_employe']; ?>" class="btn btn-warning detail">Detail</a>
+                                            <a href="<?= BASEURL; ?>/Employe/Fire/<?= $data['id_employe']; ?>" class="btn btn-dark me-1 fire">Fire</a>
+                                            <a href="<?= BASEURL; ?>/Employe/Detail/<?= $data['id_employe']; ?>" class="btn btn-warning detail">Detail</a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>

@@ -42,9 +42,9 @@
 
                     </form>
                     <div class="btn-box mt-4">
-                        <a href="<?= BASEURL; ?>/employe/delete/<?= $data['employe']['id_employe']; ?>" class="btn btn-danger me-1 delete">Delete</a>
-                        <a href="<?= BASEURL; ?>/employe/update/<?= $data['employe']['id_employe']; ?>" class="btn btn-success me-1 update-employe" data-bs-toggle="modal" data-bs-target="#form-modal" data-id="<?= $data['employe']['id_employe'] ?>">Update</a>
-                        <a href="<?= BASEURL; ?>/employe/" class="btn btn-info">Back</a>
+                        <a href="<?= BASEURL; ?>/Employe/delete/<?= $data['employe']['id_employe']; ?>" class="btn btn-danger me-1 delete">Delete</a>
+                        <a href="<?= BASEURL; ?>/Employe/update/<?= $data['employe']['id_employe']; ?>" class="btn btn-success me-1 update-employe" data-bs-toggle="modal" data-bs-target="#form-modal" data-id="<?= $data['employe']['id_employe'] ?>">Update</a>
+                        <a href="<?= BASEURL; ?>/Employe/" class="btn btn-info">Back</a>
                     </div>
                 </div>
             </div>

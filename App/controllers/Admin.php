@@ -6,28 +6,15 @@ class Admin extends Controller{
     function index(){
 
         $data = [
-            'title' => 'Home',
+            'title' => 'Admin',
             'admin' => $this->model('admin_model')->getAllAdmin('')
         ];
+        $this->checkLogin();
         $this->view('templates/header' , $data);
         $this->view('templates/sidebar' , $data);
         $this->view('admin/index', $data);
         $this->view('templates/footer');
     }
-
-
-    // function add(){
-
-    //     if ($this->model('Admin_model')->addAdmin($_POST) > 0) {
-    //         Flasher::setFlash('Successfully','Added','success');
-    //         header('location:' . BASEURL . '/admin');
-    //         exit;
-    //     }else {
-    //         Flasher::setFlash('Failed','To Add','error');
-    //         header('location:' . BASEURL . '/admin');
-    //         exit;
-    //     }
-    // }
 
 
     // function delete($id){
@@ -43,6 +30,7 @@ class Admin extends Controller{
 
     // }
 
+
     // function find(){
 
     //     $data['judul'] = "Halaman Admin";
@@ -53,9 +41,13 @@ class Admin extends Controller{
 
     // }
 
+
+
     // function getUpdate(){
     //     echo json_encode($this->model('admin_model')->getAdminById($_POST['id']));
     // }
+
+
 
     // function update(){
 

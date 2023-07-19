@@ -1,8 +1,8 @@
 const currentUrl = window.location.href;
 const url1 = 'http://localhost/Techma/Public/'
-const url2 = 'http://localhost/Techma/Public/employe/'
-const url3 = 'http://localhost/Techma/Public/admin/'
-const url4 = 'http://localhost/Techma/Public/employe/detail'
+const url2 = 'http://localhost/Techma/Public/Employe'
+const url3 = 'http://localhost/Techma/Public/Admin'
+const url4 = 'http://localhost/Techma/Public/Employe/Detail'
 
 
 
