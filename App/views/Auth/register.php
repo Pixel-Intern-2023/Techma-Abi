@@ -1,4 +1,3 @@
-<div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full" data-sidebar-position="fixed" data-header-position="fixed">
    <div class="row">
       <div class="col-lg-12">
          <?= Flasher::flash(); ?>
@@ -10,10 +9,9 @@
             <div class="col-md-8 col-lg-6 col-xxl-3">
                <div class="card mb-0">
                   <div class="card-body">
-                     <a href="./index.html" class="text-nowrap logo-img text-center d-block py-3 w-100">
-                        <img src="<?= BASEURL; ?>/images/logos/dark-logo.svg" width="180" alt="">
+                     <a href="#" class="text-nowrap mb-3 logo-img text-center d-block py-3 w-100">
+                        <img src="<?= BASEURL; ?>/assets/images/logos/Techma.png" width="200" alt="">
                      </a>
-                     <p class="text-center">Your Social Campaigns</p>
 
                      <form action="<?= BASEURL; ?>/Auth/Register" method="post">
                         <div class="mb-3">
@@ -32,7 +30,7 @@
                            <label for="password" class="form-label">Password</label>
                            <input type="password" class="form-control" name="password" id="password" required>
                         </div>
-                        <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Sign Up</button>
+                        <button type="submit" class="btn btn-dark w-100 py-8 fs-4 mb-4 rounded-2">Sign Up</button>
                      </form>
                      <div class="d-flex align-items-center justify-content-center">
                         <p class="fs-4 mb-0 fw-bold">Already have an Account?</p>
@@ -44,4 +42,3 @@
          </div>
       </div>
    </div>
-</div>

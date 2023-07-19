@@ -1,5 +1,5 @@
 <?php
-ini_set("display_errors", "1") ;
+ini_set("display_errors", "1");
 
 class Admin_model
 {
@@ -25,7 +25,7 @@ class Admin_model
         $this->db->bind('id_admin', $id);
         return $this->db->single();
     }
-    
+
     function getAdminCount()
     {
         $this->db->query('SELECT COUNT(*) as admin FROM ' . $this->table);
@@ -39,24 +39,23 @@ class Admin_model
         $this->db->bind('email', $data['email']);
         $this->db->execute();
         if ($this->db->rowCount() > 0) {
-            Flasher::setFlash('Failed','Email Has Been Registered','error');
+            Flasher::setFlash('Failed', 'Email Has Been Registered', 'error');
             header('location:' . BASEURL . '/Auth/Register');
             exit;
-        }else{
-            
-        $query = "INSERT INTO " . $this->table . " VALUES (null, :username, :name, :email, :password, null)";
+        } else {
 
-        $hash = password_hash($data['password'],PASSWORD_DEFAULT);
+            $query = "INSERT INTO " . $this->table . " VALUES (null, :username, :name, :email, :password, null)";
 
-        $this->db->query($query);
-        $this->db->bind('username', $data['username']);
-        $this->db->bind('name', $data['name']);
-        $this->db->bind('email', $data['email']);
-        $this->db->bind('password', $hash);
+            $hash = password_hash($data['password'], PASSWORD_DEFAULT);
 
-        $this->db->execute();
-        return $this->db->rowCount();
+            $this->db->query($query);
+            $this->db->bind('username', $data['username']);
+            $this->db->bind('name', $data['name']);
+            $this->db->bind('email', $data['email']);
+            $this->db->bind('password', $hash);
 
+            $this->db->execute();
+            return $this->db->rowCount();
         }
     }
 
@@ -68,7 +67,7 @@ class Admin_model
     //     $this->db->bind('username', $data['username']);
     //     $this->db->execute();
     //     if ($this->db->rowCount() > 0) {
-           
+
     //         $dbPassword = $this->db->single();
     //         $oldPassword = $dbPassword['password'];
     //         $password = $data['password'] ;
@@ -79,7 +78,7 @@ class Admin_model
     //             echo 'lol';
     //         }
     //         die;
-            
+
 
     //     }else{
     //         echo 'he';
@@ -89,36 +88,35 @@ class Admin_model
     // }
 
 
-    function LoginAdmin($data) {
+    function LoginAdmin($data)
+    {
         $this->db->query('SELECT * FROM ' . $this->table . ' WHERE username = :username');
         $this->db->bind('username', $data['username']);
         $this->db->execute();
-    
-        if ($this->db->rowCount() > 0) { 
 
+        if ($this->db->rowCount() > 0) {
             $dbPassword = $this->db->single();
             $oldPassword = $dbPassword['password'];
-            $password = $data['password'] ;
+            $password = $data['password'];
 
-            if (password_verify( $password , $oldPassword )) {
+            if (password_verify($password, $oldPassword)) {
+
                 $_SESSION['user'] = 'User';
                 header('location:' . BASEURL);
+
             } else {
-                // Password is incorrect
+
                 Flasher::setFlash('Failed', 'Invalid Password', 'error');
                 header('location:' . BASEURL . '/Auth');
                 exit;
-            }
 
+            }
         } else {
-            Flasher::setFlash('Username','Not Found','error');
+            
+            Flasher::setFlash('Username', 'Not Found', 'error');
             header('location:' . BASEURL . '/Auth');
             exit;
         }
-
+        
     }
-    
-
-
-
 }
