@@ -41,6 +41,7 @@ class Auth extends Controller{
             header('location:' . BASEURL . '/Index');
             exit;
         }
+        
     }
 
     function LogOut(){

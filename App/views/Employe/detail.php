@@ -13,6 +13,7 @@
                 <img src="<?= BASEURL; ?>/img/<?= $data['employe']['employe_image']; ?>" class="position-absolute top-0 start-50 translate-middle rounded-circle shadow-lg <?= $data['employe']['employe_status'] == 'Fired' ? 'filter' : '' ?>" width="100" height="100" alt="">
 
                 <div class="card-body mt-4">
+                    
                     <form action="" method="post" enctype="multipart/form-data">
 
                         <div class="mb-3">

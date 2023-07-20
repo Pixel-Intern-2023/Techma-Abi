@@ -21,7 +21,15 @@
                         </div>
                         <div class="mb-4">
                            <label class="form-label">Password</label>
-                           <input type="password" required class="form-control" name="password">
+                           <input type="password" required class="form-control" id="password" name="password">
+                        </div>
+                        <div class="d-flex align-items-center justify-content-between mb-4">
+                           <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="" id="passwordCheck">
+                              <label class="form-check-label text-dark" for="passwordCheck">
+                                 See Password?
+                              </label>
+                           </div>
                         </div>
                         <button class="btn btn-dark w-100 py-8 fs-4 mb-4 rounded-2">Sign In</button>
                      </form>
