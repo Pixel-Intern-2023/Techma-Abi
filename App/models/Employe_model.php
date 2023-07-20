@@ -11,6 +11,7 @@ class Employe_model {
     }
 
 
+    // Get View
     function getAll($tb)
     {
         $this->db->query('SELECT * FROM ' . $tb);
@@ -48,6 +49,28 @@ class Employe_model {
     }
 
 
+    function getOccupationList(){
+        
+        $this->db->query('SELECT * FROM occupation');
+        return $this->db->resultSet();
+        
+    }
+
+    function findEmploye()
+    {
+        $keyword = $_POST['keyword'];
+        $query = 'SELECT employe.id_employe, employe.employe_image, employe.name, occupation.occupation_name, employe.description, employe.salary, employe.employe_status FROM ' . $this->table . ' JOIN occupation ON employe.id_occupation = occupation.id_occupation WHERE name LIKE :keyword';
+
+        $this->db->query($query);
+        $this->db->bind('keyword', "%$keyword%");
+        return $this->db->resultSet();
+
+    }
+
+    // Get View End
+
+
+
     // Count
     function getEmployeCount()
     {
@@ -74,6 +97,9 @@ class Employe_model {
     // Count End
 
     
+
+    // Get Proces
+
     function addEmploye($data, $dataImg)
     {
         $filename = $dataImg['employe_image']['name'];
@@ -162,17 +188,8 @@ class Employe_model {
         return $this->db->rowCount();   
     }
 
+    // Get Proces End
 
-    function findEmploye()
-    {
-        $keyword = $_POST['keyword'];
-        $query = 'SELECT employe.id_employe, employe.employe_image, employe.name, occupation.occupation_name, employe.description, employe.salary, employe.employe_status FROM ' . $this->table . ' JOIN occupation ON employe.id_occupation = occupation.id_occupation WHERE name LIKE :keyword';
-
-        $this->db->query($query);
-        $this->db->bind('keyword', "%$keyword%");
-        return $this->db->resultSet();
-
-    }
 
 
 }

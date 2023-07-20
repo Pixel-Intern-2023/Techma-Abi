@@ -40,6 +40,7 @@
                <a class="sidebar-link" id="admin" href="<?= BASEURL; ?>/Admin/" aria-expanded="false">
                   <span>
                      <i class="ti ti-alert-circle"></i>
+                     <i class="ti ti-user-star"></i>
                   </span>
                   <span class="hide-menu">Admin</span>
                </a>

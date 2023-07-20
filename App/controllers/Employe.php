@@ -7,13 +7,14 @@ class Employe extends Controller{
     function index(){
         $data = [
             'title' => 'Employe',
-            'employe' => $this->model('employe_model')->getEmployeJoin()
+            'employe' => $this->model('employe_model')->getEmployeJoin(),
+            'occupation' => $this->model('employe_model')->getOccupationList()
         ];
         $this->checkLogin();
         $this->view('templates/header', $data);
         $this->view('templates/sidebar');
         $this->view('employe/index', $data);
-        $this->view('templates/modal_employe');
+        $this->view('templates/modal_employe' , $data);
         $this->view('templates/footer');
     }
 
@@ -21,13 +22,14 @@ class Employe extends Controller{
 
         $data = [
             'title' => 'Employe Detail',
-            'employe' => $this->model('Employe_model')->getEmployeJoinId($id)
+            'employe' => $this->model('Employe_model')->getEmployeJoinId($id),
+            'occupation' => $this->model('Employe_model')->getOccupationList()
         ];
         $this->checkLogin();
         $this->view('templates/header', $data);
         $this->view('templates/sidebar');
         $this->view('employe/detail', $data);
-        $this->view('templates/modal_employe');
+        $this->view('templates/modal_employe' , $data);
         $this->view('templates/footer');
 
     }

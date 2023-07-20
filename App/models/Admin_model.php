@@ -38,9 +38,10 @@ class Admin_model
         $this->db->query('SELECT * FROM ' . $this->table . ' WHERE email = :email');
         $this->db->bind('email', $data['email']);
         $this->db->execute();
+
         if ($this->db->rowCount() > 0) {
             Flasher::setFlash('Failed', 'Email Has Been Registered', 'error');
-            header('location:' . BASEURL . '/Auth/Register');
+            header('location:' . BASEURL . '/Auth/RegisterPage');
             exit;
         } else {
 
@@ -60,34 +61,6 @@ class Admin_model
     }
 
 
-
-    // function LoginAdmin($data){
-
-    //     $this->db->query('SELECT * FROM ' . $this->table . ' WHERE username = :username');
-    //     $this->db->bind('username', $data['username']);
-    //     $this->db->execute();
-    //     if ($this->db->rowCount() > 0) {
-
-    //         $dbPassword = $this->db->single();
-    //         $oldPassword = $dbPassword['password'];
-    //         $password = $data['password'] ;
-
-    //         if (password_verify( $password , $oldPassword )) {
-    //             echo 'ha';
-    //         }else{
-    //             echo 'lol';
-    //         }
-    //         die;
-
-
-    //     }else{
-    //         echo 'he';
-    //         die;
-    //     }
-
-    // }
-
-
     function LoginAdmin($data)
     {
         $this->db->query('SELECT * FROM ' . $this->table . ' WHERE username = :username');
@@ -95,11 +68,10 @@ class Admin_model
         $this->db->execute();
 
         if ($this->db->rowCount() > 0) {
-            $dbPassword = $this->db->single();
-            $oldPassword = $dbPassword['password'];
-            $password = $data['password'];
 
-            if (password_verify($password, $oldPassword)) {
+            $dbPassword = $this->db->single();
+
+            if (password_verify($data['password'], $dbPassword['password'])) {
 
                 $_SESSION['user'] = 'User';
                 header('location:' . BASEURL);
@@ -112,11 +84,17 @@ class Admin_model
 
             }
         } else {
-            
+    
             Flasher::setFlash('Username', 'Not Found', 'error');
             header('location:' . BASEURL . '/Auth');
             exit;
         }
         
     }
+
+
+
+
+
+    
 }

@@ -61,7 +61,7 @@ $(function () {
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
+            confirmButtonText: 'Yes, delete employe!'
         }).then((result) => {
             if (result.isConfirmed) {
                 window.location = link;
@@ -80,7 +80,7 @@ $(function () {
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
+            confirmButtonText: 'Yes, fire employe!'
         }).then((result) => {
             if (result.isConfirmed) {
                 window.location = link;
@@ -88,6 +88,21 @@ $(function () {
         });
     });
 
+
+    $('#passwordCheck').on('click', function(){
+        let passInput = $("#password");
+
+        if(passInput.attr('type') == 'password'){
+
+           passInput.attr('type','text');
+
+        }else{
+
+           passInput.attr('type','password');
+           
+        }
+    });
+    
     
 });
 

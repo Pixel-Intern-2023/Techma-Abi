@@ -25,8 +25,9 @@
                     <div class="mb-3">
                         <label for="id_occupation" class="form-label">Occupation :</label>
                         <select class="form-select" aria-label="Default select example" required id="id_occupation" name="id_occupation">
-                            <option value="1">IT</option>
-                            <option value="2">Accountant</option>
+                            <?php foreach($data['occupation'] as $data){?>
+                            <option value="<?= $data['id_occupation'] ?>" ><?= $data['occupation_name'] ?></option> 
+                            <?php } ?>                       
                         </select>
                     </div>
 
