@@ -7,8 +7,8 @@ class Employe extends Controller{
     function index(){
         $data = [
             'title' => 'Employe',
-            'employe' => $this->model('employe_model')->getEmployeJoin(),
-            'occupation' => $this->model('employe_model')->getOccupationList()
+            'employe' => $this->model('Employe_model')->getEmployeJoin(),
+            'occupation' => $this->model('Employe_model')->getOccupationList()
         ];
         $this->checkLogin();
         $this->view('templates/header', $data);
@@ -39,12 +39,14 @@ class Employe extends Controller{
 
         $data=[
             'title' => 'Employe',
-            'employe' => $this->model('employe_model')->findEmploye()
+            'employe' => $this->model('Employe_model')->findEmploye(),
+            'occupation' => $this->model('Employe_model')->getOccupationList()
         ];
         $this->checkLogin();
-        $this->view('templates/header');
+        $this->view('templates/header',$data);
         $this->view('templates/sidebar');
         $this->view('employe/index', $data);
+        $this->view('templates/modal_employe' , $data);
         $this->view('templates/footer');
 
     }
@@ -65,7 +67,7 @@ class Employe extends Controller{
 
     function delete($id){
 
-        if ($this->model('employe_model')->deleteEmploye($id) > 0) {
+        if ($this->model('Employe_model')->deleteEmploye($id) > 0) {
             Flasher::setFlash('Successfully Deleted Employe','success');
             header('location:' . BASEURL . '/Employe');
             exit;
@@ -78,12 +80,12 @@ class Employe extends Controller{
     }
 
     function getUpdate(){
-        echo json_encode($this->model('employe_model')->getEmployeById($_POST['id']));
+        echo json_encode($this->model('Employe_model')->getEmployeById($_POST['id']));
     }
 
     function update(){
 
-        if ($this->model('employe_model')->updateEmploye($_POST,$_FILES) > 0) {
+        if ($this->model('Employe_model')->updateEmploye($_POST,$_FILES) > 0) {
             Flasher::setFlash('Successfully Changed','success');
             header('location:' . $_SERVER['HTTP_REFERER']);
             exit;
@@ -97,7 +99,7 @@ class Employe extends Controller{
 
     function fire($id)
     {
-        if ($this->model('employe_model')->fireEmploye($id) > 0) {
+        if ($this->model('Employe_model')->fireEmploye($id) > 0) {
             Flasher::setFlash('Successfully Fired Employe','success');
             header('location:' . BASEURL . '/Employe');
             exit;
