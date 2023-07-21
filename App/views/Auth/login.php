@@ -10,7 +10,7 @@
                <div class="card mb-0">
                   <div class="card-body">
 
-                     <a href="./index.html" class="text-nowrap logo-img text-center d-block py-3 w-100">
+                     <a href="#" class="text-nowrap logo-img text-center d-block py-3 w-100">
                         <img src="<?= BASEURL; ?>/assets/images/logos/Techma.png" width="180" alt="">
                      </a>
 
@@ -36,7 +36,7 @@
 
                      <div class="d-flex align-items-center justify-content-center">
                         <p class="fs-4 mb-0 fw-bold">New to Techma?</p>
-                        <a class="text-primary fw-bold ms-2" href="<?= BASEURL; ?>/auth/RegisterPage">Create an account</a>
+                        <a class="text-primary fw-bold ms-2" href="<?= BASEURL; ?>/Auth/RegisterPage">Create an account</a>
                      </div>
                   </div>
                </div>

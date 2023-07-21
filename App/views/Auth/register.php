@@ -42,7 +42,7 @@
                      </form>
                      <div class="d-flex align-items-center justify-content-center">
                         <p class="fs-4 mb-0 fw-bold">Already have an Account?</p>
-                        <a class="text-primary fw-bold ms-2" href="<?= BASEURL; ?>/auth">Sign In</a>
+                        <a class="text-primary fw-bold ms-2" href="<?= BASEURL; ?>/Auth">Sign In</a>
                      </div>
                   </div>
                </div>
