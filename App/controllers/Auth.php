@@ -24,7 +24,7 @@ class Auth extends Controller{
 
     function Register(){
 
-        if ($this->model('admin_model')->addAdmin($_POST) > 0) {
+        if ($this->model('Admin_model')->addAdmin($_POST) > 0) {
             Flasher::setFlash('Successfully Added','success');
             header('location:' . BASEURL . '/Auth/RegisterPage');
             exit;
@@ -37,7 +37,7 @@ class Auth extends Controller{
 
     function Login(){
 
-        if ($this->model('admin_model')->LoginAdmin($_POST) > 0) {
+        if ($this->model('Admin_model')->LoginAdmin($_POST) > 0) {
             header('location:' . BASEURL . '/Index');
             exit;
         }

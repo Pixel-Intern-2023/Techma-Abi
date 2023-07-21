@@ -7,10 +7,10 @@ class Dashboard extends Controller{
 
         $data = [
             'title' => 'Dashboard',
-            'employe' => $this->model('employe_model')->getEmployeCount(),
-            'working' => $this->model('employe_model')->getWorkingCount(),
-            'fired' => $this->model('employe_model')->getFiredCount(),
-            'admin' => $this->model('admin_model')->getAdminCount()
+            'employe' => $this->model('Employe_model')->getEmployeCount(),
+            'working' => $this->model('Employe_model')->getWorkingCount(),
+            'fired' => $this->model('Employe_model')->getFiredCount(),
+            'admin' => $this->model('Admin_model')->getAdminCount()
         ];
         $this->checkLogin();
         $this->view('templates/header' , $data);

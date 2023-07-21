@@ -7,11 +7,11 @@ class Admin extends Controller{
 
         $data = [
             'title' => 'Admin',
-            'admin' => $this->model('admin_model')->getAllAdmin('')
+            'admin' => $this->model('Admin_model')->getAllAdmin('')
         ];
         $this->checkLogin();
         $this->view('templates/header' , $data);
-        $this->view('templates/sidebar' , $data);
+        $this->view('templates/sidebar');
         $this->view('admin/index', $data);
         $this->view('templates/footer');
     }
