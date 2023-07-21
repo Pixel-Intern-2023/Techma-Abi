@@ -53,11 +53,11 @@ class Employe extends Controller{
     function add(){
 
         if ($this->model('Employe_model')->addEmploye($_POST,$_FILES) > 0) {
-            Flasher::setFlash('Successfully','Added Employe','success');
+            Flasher::setFlash('Successfully Added Employe','success');
             header('location:' . BASEURL . '/Employe');
             exit;
         }else {
-            Flasher::setFlash('Failed','To Add Employe','error');
+            Flasher::setFlash('Failed To Add Employe','error');
             header('location:' . BASEURL . '/Employe');
             exit;
         }
@@ -66,11 +66,11 @@ class Employe extends Controller{
     function delete($id){
 
         if ($this->model('employe_model')->deleteEmploye($id) > 0) {
-            Flasher::setFlash('Successfully','Deleted Employe','success');
+            Flasher::setFlash('Successfully Deleted Employe','success');
             header('location:' . BASEURL . '/Employe');
             exit;
         }else {
-            Flasher::setFlash('Failed','To Delete Employe','error');
+            Flasher::setFlash('Failed To Delete Employe','error');
             header('location:' . BASEURL . '/Employe');
             exit;
         }
@@ -84,11 +84,11 @@ class Employe extends Controller{
     function update(){
 
         if ($this->model('employe_model')->updateEmploye($_POST,$_FILES) > 0) {
-            Flasher::setFlash('Successfully','Changed','success');
+            Flasher::setFlash('Successfully Changed','success');
             header('location:' . $_SERVER['HTTP_REFERER']);
             exit;
         }else {
-            Flasher::setFlash('Failed','To Change','error');
+            Flasher::setFlash('Failed To Change','error');
             header('location:' . $_SERVER['HTTP_REFERER']);
             exit;
         }
@@ -98,11 +98,11 @@ class Employe extends Controller{
     function fire($id)
     {
         if ($this->model('employe_model')->fireEmploye($id) > 0) {
-            Flasher::setFlash('Successfully','Fired Employe','success');
+            Flasher::setFlash('Successfully Fired Employe','success');
             header('location:' . BASEURL . '/Employe');
             exit;
         }else {
-            Flasher::setFlash('Failed','To Fire Employe','error');
+            Flasher::setFlash('Failed To Fire Employe','error');
             header('location:' . BASEURL . '/Employe');
             exit;
         }

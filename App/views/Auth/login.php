@@ -16,11 +16,11 @@
 
                      <form action="<?= BASEURL; ?>/Auth/Login" method="post">
                         <div class="mb-3">
-                           <label class="form-label">Username</label>
-                           <input type="text" required class="form-control" name="username" aria-describedby="emailHelp">
+                           <label class="form-label">Email :</label>
+                           <input type="email" required class="form-control" name="email" aria-describedby="emailHelp">
                         </div>
                         <div class="mb-4">
-                           <label class="form-label">Password</label>
+                           <label class="form-label">Password :</label>
                            <input type="password" required class="form-control" id="password" name="password">
                         </div>
                         <div class="d-flex align-items-center justify-content-between mb-4">

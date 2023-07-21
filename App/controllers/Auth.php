@@ -25,11 +25,11 @@ class Auth extends Controller{
     function Register(){
 
         if ($this->model('admin_model')->addAdmin($_POST) > 0) {
-            Flasher::setFlash('Successfully','Added','success');
+            Flasher::setFlash('Successfully Added','success');
             header('location:' . BASEURL . '/Auth/RegisterPage');
             exit;
         }else {
-            Flasher::setFlash('Failed','To Add','error');
+            Flasher::setFlash('Failed To Add','error');
             header('location:' . BASEURL . '/Auth/RegisterPage');
             exit;
         }
@@ -46,7 +46,7 @@ class Auth extends Controller{
 
     function LogOut(){
         unset($_SESSION['user']);
-        Flasher::setFlash('Successfully','Log Out','success');
+        Flasher::setFlash('Successfully Log Out','success');
         header('location:' . BASEURL . '/Auth');
     }
 
