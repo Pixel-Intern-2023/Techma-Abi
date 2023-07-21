@@ -40,7 +40,7 @@ class Admin_model
         $this->db->execute();
 
         if ($this->db->rowCount() > 0) {
-            Flasher::setFlash('Failed', 'Email Has Been Registered', 'error');
+            Flasher::setFlash('Email Has Been Registered', 'error');
             header('location:' . BASEURL . '/Auth/RegisterPage');
             exit;
         } else {
@@ -63,8 +63,8 @@ class Admin_model
 
     function LoginAdmin($data)
     {
-        $this->db->query('SELECT * FROM ' . $this->table . ' WHERE username = :username');
-        $this->db->bind('username', $data['username']);
+        $this->db->query('SELECT * FROM ' . $this->table . ' WHERE email = :email');
+        $this->db->bind('email', $data['email']);
         $this->db->execute();
 
         if ($this->db->rowCount() > 0) {
@@ -78,14 +78,13 @@ class Admin_model
 
             } else {
 
-                Flasher::setFlash('Failed', 'Invalid Password', 'error');
+                Flasher::setFlash('Invalid Password', 'error');
                 header('location:' . BASEURL . '/Auth');
                 exit;
 
             }
         } else {
-    
-            Flasher::setFlash('Username', 'Not Found', 'error');
+            Flasher::setFlash('Email Not Found', 'error');
             header('location:' . BASEURL . '/Auth');
             exit;
         }

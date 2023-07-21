@@ -3,12 +3,11 @@
 class Flasher
 {
 
-    public static function setFlash($message, $action, $type)
+    public static function setFlash($message, $type)
     {
 
         $_SESSION['flash'] = [
             'message' => $message,
-            'action' => $action,
             'type' => $type
         ];
 
@@ -20,9 +19,8 @@ class Flasher
          
             echo '<script>';
             echo 'Swal.fire({';
-            echo '    text: "'.  $_SESSION['flash']['action'] .'",';
-            echo '    icon: "' . $_SESSION['flash']['type'] .'",';
-            echo '    title: "' .$_SESSION['flash']['message']. '",';
+            echo '    icon: "'.$_SESSION['flash']['type'].'",';
+            echo '    title: "'.$_SESSION['flash']['message'].'",';
             echo '});';
             echo '</script>';
         
